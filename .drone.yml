@@ -5,22 +5,21 @@ trigger:
   branch:
     - main
 
-steps:
-- name: build_and_push_image
-  image: plugins/docker
-  settings:
-    repo: lholter/pcjazzerne
-    registry: docker.io
-    username:
-      from_secret: DOCKER_USERNAME
-    password:
-      from_secret: DOCKER_TOKEN
-    tags: latest
-    dockerfile: Dockerfile
-
 - name: update_service
   image: docker/compose:1.29.2
   commands:
     - cd $${DOCKERDIR}
     - docker-compose pull pcjazzerne-frontend
     - docker-compose up -d pcjazzerne-frontend
+
+- name: debug_dir
+  image: alpine
+  commands:
+    - echo "Current Directory: $(pwd)"
+    - ls -l
+
+- name: debug_compose
+  image: alpine
+  commands:
+    - cat $${DOCKERDIR}/docker-compose.yml
+
