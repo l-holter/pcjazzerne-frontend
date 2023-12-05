@@ -24,9 +24,3 @@ steps:
     - cd $${DOCKERDIR}
     - docker-compose pull pcjazzerne-frontend
     - docker-compose up -d pcjazzerne-frontend
-
-- name: debug
-  image: alpine
-  commands:
-    - echo "DOCKER_DIR: ${DOCKERDIR}"
-
