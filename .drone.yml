@@ -4,20 +4,22 @@ name: default
 trigger:
   branch:
     - main
-  event:
-    - pull_request
 
 steps:
-- name: install_and_build
-  image: node
-  commands:
-    - npm install
-    - npm run build
+- name: build_and_push_image
+  image: plugins/docker
+  settings:
+    repo: lholter/pcjazzerne
+    registry: docker.io
+    username:
+      from_secret: DOCKER_USERNAME
+    password:
+      from_secret: DOCKER_TOKEN
+    tags: latest
+    dockerfile: Dockerfile
 
-- name: deploy_to_production
-  image: lholter/pcjazzerne:latest
-  when:
-    branch:
-      - main
+- name: update_service
+  image: docker/compose:1.29.2
   commands:
-    - npm start
+    - docker-compose pull pcjazzerne-frontend
+    - docker-compose up -d pcjazzerne-frontend
