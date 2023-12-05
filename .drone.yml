@@ -28,5 +28,5 @@ steps:
 - name: debug
   image: alpine
   commands:
-    - echo "DOCKER_DIR: ${DOCKER_DIR}"
+    - echo "DOCKER_DIR: ${DOCKERDIR}"
 
