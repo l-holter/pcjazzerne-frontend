@@ -1,15 +1,9 @@
 kind: pipeline
-type: docker
-name: sick-pipeline
+name: default
 
 steps:
-- name: docker  
-  image: plugins/docker
-  settings:
-    repo: DOCKERHUB_USERNAME/pcjazzerne
-    username:
-      from_secret: DOCKERHUB_USERNAME
-    password:
-      from_secret: DOCKER_TOKEN
-    tags: 
-      - latest
+- name: test
+  image: node
+  commands:
+  - npm install
+  - npm test
