@@ -1,39 +1,37 @@
-import Image from 'next/image'
-import LoginForm from './components/LoginForm'
-import { pb, getUser } from "@/app/lib/pocketbase";
+"use client"
+import { NextPage } from "next";
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { usePBAuth } from "./contexts/AuthWrapper";
 
 
+const Home: NextPage = () => {
+  const { user, signOut} = usePBAuth();
+  const router = useRouter();
 
-export default function Home() {
+  useEffect(() => {
+    // Redirect to login page if user is not defined
+    if (!user) {
+      router.push('/login');
+    }
+  }, [user, router]);
 
-  if (pb.authStore.isValid) {
-    return (
-      <main className="flex h-screen bg-blue-950 items-center justify-center">
-      <Image
-        src="/logo/pc_text.png"
-        alt="PC Jazzerne Text Logo"
-        width={400}
-        height={200}
-        className="w-half h-auto"
-      />
-
-      <button onClick={() => getUser()}>
-      Get username
-      </button>
+  return (
+    <main className="flex h-screen bg-blue-950 items-center justify-center">
+      {user ? (
+        // Home page
+        <div>
+          <h1>{user.name}</h1>
+          <p>
+            <img src={user.avatarUrl} width={50} alt="avatar" />
+          </p>
+          <p>Username: {user.username}</p>
+          <p>Email: {user.email}</p>
+          <button onClick={signOut}>Sign Out</button>
+        </div>
+      ) : null}
     </main>
-    )
-  } else {
-    return (
-      <main className="flex h-screen bg-blue-950 items-center justify-center">
-        <Image
-          src="/logo/pc_text.png"
-          alt="PC Jazzerne Text Logo"
-          width={400}
-          height={200}
-          className="w-half h-auto"
-        />
-        <LoginForm />
-      </main>
-    )
-  }
-}
+  );
+};
+
+export default Home;
