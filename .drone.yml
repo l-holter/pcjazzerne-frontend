@@ -25,5 +25,5 @@ steps:
       path: /var/run/docker.sock
   commands:
     - ls
-    - docker-compose -f Containers/docker-compose.yml pull pcjazzerne-frontend
-    - docker-compose -f Containers/docker-compose.yml up -d pcjazzerne-frontend
+    - docker-compose pull
+    - docker-compose up -d
