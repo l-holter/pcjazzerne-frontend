@@ -1,5 +1,4 @@
 kind: pipeline
-type: docker
 name: default
 
 trigger:
@@ -25,8 +24,19 @@ steps:
     - name: docker-socket
       path: /var/run/docker.sock
   commands:
-    - docker -v
-    - nohup dockerd &
-    - docker ps
+    - up -d
     - docker-compose pull
     - docker-compose up -d
+
+# steps:
+# - name: test
+#   image: compose:1.23.2
+#   volumes:
+#   - name: docker_sock
+#     path: /var/run/docker.sock
+#   commands:
+#   - up -f /drone/src/docker-compose.yaml
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock
