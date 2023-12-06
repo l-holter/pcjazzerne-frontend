@@ -48,6 +48,8 @@ const Login: NextPage = () => {
                 <Image
                   src="https://www.svgrepo.com/show/475656/google-color.svg"
                   alt="Google Logo"
+                  width={50}
+                  height={50}
                   className="w-6 h-6"
                 />
                 <span>Login with Google</span>
