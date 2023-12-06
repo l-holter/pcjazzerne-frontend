@@ -24,3 +24,8 @@ steps:
   commands:
     - docker-compose pull pcjazzerne-frontend
     - docker-compose up -d pcjazzerne-frontend
+
+- name: debug
+  image: alpine
+  commands:
+    - ls -l /home/lars/Containers
