@@ -34,10 +34,14 @@ jobs:
   notify-webhook:
     needs: build
     runs-on: ubuntu-latest
+    if: ${{ needs.build.result == 'success' }}
     steps:
       - name: Notify Webhook
         run: |
+          payload='{"ref": "${{ github.event.before }}..${{ github.sha }}"}'
+          signature=$(echo -n "$payload" | openssl sha1 -hmac "${{ secrets.WEBHOOK_SECRET }}" | awk '{print "sha1="$1}')
+
           curl -X POST -H "Content-Type: application/json" \
-            -H "X-Hub-Signature: sha1=${{ secrets.WEBHOOK_SECRET }}" \
-            -d '{"ref": "refs/heads/main"}' \
+            -H "X-Hub-Signature: $signature" \
+            -d "$payload" \
             https://hook.holter.io/hooks/deploy-pcjazzerne-frontend
