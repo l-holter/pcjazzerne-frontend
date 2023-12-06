@@ -1,0 +1,15 @@
+version: "3.7"
+networks:
+  t2_proxy:
+    external:
+      name: t2_proxy
+
+
+services:
+  pcjazzerne-frontend:
+      container_name: pcjazzerne-frontend
+      image: lholter/pcjazzerne:latest
+      networks:
+        - t2_proxy
+      ports:
+        - 3030:3030
