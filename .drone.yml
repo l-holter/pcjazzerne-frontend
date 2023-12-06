@@ -6,21 +6,22 @@ trigger:
     - main
 
 steps:
-#- name: build_and_push_image
-#  image: plugins/docker
-#  settings:
-#    repo: lholter/pcjazzerne
-#    registry: docker.io
-#    username:
-#      from_secret: DOCKER_USERNAME
-#    password:
-#      from_secret: DOCKER_TOKEN
-#    tags: latest
-#    dockerfile: Dockerfile
+# - name: build_and_push_image
+#   image: plugins/docker
+#   settings:
+#     repo: lholter/pcjazzerne
+#     registry: docker.io
+#     username:
+#       from_secret: DOCKER_USERNAME
+#     password:
+#       from_secret: DOCKER_TOKEN
+#     tags: latest
+#     dockerfile: Dockerfile
 
 - name: update_service
   image: docker/compose:1.29.2
+  working_dir:
+    from_secret: DOCKERDIR
   commands:
-    - cd /home/lars/Containers
     - docker-compose pull pcjazzerne-frontend
     - docker-compose up -d pcjazzerne-frontend
