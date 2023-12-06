@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: Notify Webhook
         run: |
-          payload='{"ref": "${{ github.sha }}"}'
+          payload='{"ref": "refs/heads/main", "sha": "${{ github.sha }}", "repo": "${{ github.repository }}" }'
           signature=$(echo -n "$payload" | openssl sha1 -hmac "${{ secrets.WEBHOOK_SECRET }}" | awk '{print "sha1="$1}')
           curl -X POST -H "Content-Type: application/json" \
             -H "X-Hub-Signature: $signature" \
