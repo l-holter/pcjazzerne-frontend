@@ -21,7 +21,8 @@ steps:
 - name: update_service
   image: docker/compose:1.29.2
   volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
+    - name: docker-socket
+      path: /var/run/docker.sock
   commands:
     - docker-compose -f /home/lars/Containers/docker-compose.yml pull pcjazzerne-frontend
     - docker-compose -f /home/lars/Containers/docker-compose.yml up -d pcjazzerne-frontend
