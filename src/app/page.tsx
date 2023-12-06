@@ -23,7 +23,6 @@ const Home: NextPage = () => {
         <div>
           <h1>{user.name}</h1>
           <p>
-            <img src={user.avatarUrl} width={50} alt="avatar" />
           </p>
           <p>Username: {user.username}</p>
           <p>Email: {user.email}</p>
