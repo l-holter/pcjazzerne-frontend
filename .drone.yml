@@ -18,14 +18,14 @@ steps:
 #     tags: latest
 #     dockerfile: Dockerfile
 
+- name: debug
+  image: alpine
+  commands:
+    - ls -l /home/lars/Containers
+
 - name: update_service
   image: docker/compose:1.29.2
   working_dir: /home/lars/Containers
   commands:
     - docker-compose pull pcjazzerne-frontend
     - docker-compose up -d pcjazzerne-frontend
-
-- name: debug
-  image: alpine
-  commands:
-    - ls -l /home/lars/Containers
