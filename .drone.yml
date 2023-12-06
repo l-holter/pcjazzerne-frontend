@@ -25,5 +25,5 @@ steps:
       path: /var/run/docker.sock
   commands:
     - ls
-    - docker-compose pull
-    - docker-compose up -d
+    - sudo docker-compose pull
+    - sudo docker-compose up -d
