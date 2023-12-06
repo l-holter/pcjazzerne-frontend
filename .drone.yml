@@ -24,6 +24,6 @@ steps:
     - name: docker-socket
       path: /var/run/docker.sock
   commands:
-    - ls ..
+    - ls ../..
     - docker-compose -f Containers/docker-compose.yml pull pcjazzerne-frontend
     - docker-compose -f Containers/docker-compose.yml up -d pcjazzerne-frontend
