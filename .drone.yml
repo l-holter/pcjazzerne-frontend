@@ -21,6 +21,6 @@ steps:
 - name: update_service
   image: docker/compose:1.29.2
   commands:
-    - cd $DOCKERDIR
+    - cd /home/lars/Containers
     - docker-compose pull pcjazzerne-frontend
     - docker-compose up -d pcjazzerne-frontend
