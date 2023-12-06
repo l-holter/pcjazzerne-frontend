@@ -30,3 +30,14 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/pcjazzerne:latest
+          
+  notify-webhook:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Webhook
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -H "X-Hub-Signature: sha1=${{ secrets.WEBHOOK_SECRET }}" \
+            -d '{"ref": "refs/heads/main"}' \
+            https://hook.holter.io/hooks/deploy-pcjazzerne-frontend
