@@ -24,7 +24,7 @@ const Login: NextPage = () => {
   };
 
   return (
-    <main className="flex h-screen bg-blue-950 items-center justify-center">
+    <main className="flex h-screen bg-pcjazzerne-midnight items-center justify-center">
       <div className="w-90 h-full">
         <Image
           src="/logo/pc_text.png"

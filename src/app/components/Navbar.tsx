@@ -6,13 +6,13 @@ export default function Navbar() {
   const { user } = usePBAuth();
 
   return (
-    <nav className="bg-blue-950 p-5 w-full h-40 fixed top-0 z-50 shadow-lg">
-      <div className="bg-blue-950 h-full w-full flex items-center justify-between">
+    <nav className="bg-pcjazzerne-midnight p-5 w-full h-40 fixed top-0 z-50 shadow-lg">
+      <div className="bg-pcjazzerne-midnight h-full w-full flex items-center justify-between">
 
         <div className="h-full w-1/3 flex flex-grow-0 pl-10 items-center justify-start">
-          <Link className="pr-20 text-2xl hover:text-yellow-500 transition-colors hover:underline" href="/">Home</Link>
-          <Link className="pr-20 text-2xl hover:text-yellow-500 transition-colors hover:underline" href="/">Stats</Link>
-          <Link className="text-2xl hover:text-yellow-500 transition-colors hover:underline" href="/">Kryss</Link>
+          <Link className="mr-20 text-2xl hover:text-pcjazzerne-gold transition-colors hover:underline" href="/">Home</Link>
+          <Link className="mr-20 text-2xl hover:text-pcjazzerne-gold transition-colors hover:underline" href="/">Stats</Link>
+          <Link className="text-2xl hover:text-pcjazzerne-gold transition-colors hover:underline" href="/">Kryss</Link>
         </div>
 
         <div className="h-full w-1/3 flex flex-grow-0 items-center justify-center">
