@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { NextPage } from "next";
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -6,15 +6,23 @@ import { usePBAuth } from "./contexts/AuthWrapper";
 import Navbar from "./components/Navbar";
 
 const Home: NextPage = () => {
-  const { user, signOut} = usePBAuth();
+  const { user, signOut, isInitialized } = usePBAuth(); // Add isInitialized to usePBAuth
   const router = useRouter();
 
   useEffect(() => {
-    // Redirect to login page if user is not defined
-    if (!user) {
-      router.push('/login');
-    }
-  }, [user, router]);
+    const checkUser = async () => {
+      // Wait for authentication initialization to complete
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      // Redirect to login page if user is not defined and authentication is initialized
+      if (!user && isInitialized) {
+        router.push('/login');
+      }
+    };
+
+    checkUser();
+  }, [user, router, isInitialized]);
+  
 
   return (
     <>
