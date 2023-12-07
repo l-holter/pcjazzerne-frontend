@@ -1,19 +1,38 @@
-import Image from 'next/image'
-import LoginForm from './components/LoginForm'
+"use client"
+import { NextPage } from "next";
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { usePBAuth } from "./contexts/AuthWrapper";
+import Navbar from "./components/Navbar";
 
+const Home: NextPage = () => {
+  const { user, signOut} = usePBAuth();
+  const router = useRouter();
 
-export default function Home() {
+  useEffect(() => {
+    // Redirect to login page if user is not defined
+    if (!user) {
+      router.push('/login');
+    }
+  }, [user, router]);
 
   return (
-    <main className="flex h-screen bg-blue-950 items-center justify-center">
-      <Image
-        src="/logo/pc_text.png"
-        alt="PC Jazzerne Text Logo"
-        width={400}
-        height={200}
-        className="w-half h-auto"
-      />
-      <LoginForm />
+    <>
+    {user ? (
+      <main className="flex h-screen w-screen bg-white items-center justify-center">
+        <Navbar />
+          <div>
+            <h1>{user.name}</h1>
+            <p>
+            </p>
+            <p>Username: {user.username}</p>
+            <p>Email: {user.email}</p>
+            <button onClick={signOut}>Sign Out</button>
+          </div>
     </main>
-  )
-}
+    ) : null}
+    </>
+  );
+};
+
+export default Home;
