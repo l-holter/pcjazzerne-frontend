@@ -2,8 +2,7 @@
 import { NextPage } from "next";
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { usePBAuth } from "./contexts/AuthWrapper";
-import Navbar from "./components/Navbar";
+import { usePBAuth } from "../contexts/AuthWrapper";
 
 const Home: NextPage = () => {
   const { user, signOut, isInitialized } = usePBAuth(); // Add isInitialized to usePBAuth
@@ -28,15 +27,14 @@ const Home: NextPage = () => {
     <>
     {user ? (
       <main className="flex h-screen w-screen bg-white items-center justify-center">
-        <Navbar />
-          <div>
-            <h1>{user.name}</h1>
-            <p>
-            </p>
-            <p>Username: {user.username}</p>
-            <p>Email: {user.email}</p>
-            <button onClick={signOut}>Sign Out</button>
-          </div>
+        <div>
+          <h1>{user.name}</h1>
+          <p>
+          </p>
+          <p>Username: {user.username}</p>
+          <p>Email: {user.email}</p>
+          <button onClick={signOut}>Sign Out</button>
+        </div>
     </main>
     ) : null}
     </>

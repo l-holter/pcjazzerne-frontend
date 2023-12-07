@@ -1,9 +1,14 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link";
 import { usePBAuth } from "../contexts/AuthWrapper";
 
 export default function Navbar() {
-  const { user } = usePBAuth();
+  const { user, signOut } = usePBAuth();
+
+  const handleSignOutButtonClick = () => {
+    signOut()
+  }
 
   return (
     <nav className="bg-pcjazzerne-midnight p-5 w-full h-40 fixed top-0 z-50 shadow-lg">
@@ -26,7 +31,7 @@ export default function Navbar() {
         </div>
 
         <div className=" h-full w-1/3 flex flex-grow-0 items-center justify-end">
-          <p className="mr-5">Velkommen, {user?.name}!</p>
+          <p className="mr-5">Velkommen, {user?.name}! <button onClick={handleSignOutButtonClick} className="hover:text-pcjazzerne-gold transition-colors hover:underline"> Sign out?</button></p>
           <Image
             src={user?.avatarUrl ?? "/logo/pc_logo.png"}
             alt="Profilbilde"
