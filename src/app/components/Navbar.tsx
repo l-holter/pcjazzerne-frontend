@@ -10,9 +10,9 @@ export default function Navbar() {
       <div className="bg-blue-950 h-full w-full flex items-center justify-between">
 
         <div className="h-full w-1/3 flex flex-grow-0 pl-10 items-center justify-start">
-          <Link className="pr-20 text-3xl hover:text-yellow-500 transition-colors hover:underline" href="/">Home</Link>
-          <Link className="pr-20 text-3xl hover:text-yellow-500 transition-colors hover:underline" href="/">Stats</Link>
-          <Link className="text-3xl hover:text-yellow-500 transition-colors hover:underline" href="/">Kryss</Link>
+          <Link className="pr-20 text-2xl hover:text-yellow-500 transition-colors hover:underline" href="/">Home</Link>
+          <Link className="pr-20 text-2xl hover:text-yellow-500 transition-colors hover:underline" href="/">Stats</Link>
+          <Link className="text-2xl hover:text-yellow-500 transition-colors hover:underline" href="/">Kryss</Link>
         </div>
 
         <div className="h-full w-1/3 flex flex-grow-0 items-center justify-center">
@@ -30,8 +30,8 @@ export default function Navbar() {
           <Image
             src={user?.avatarUrl ?? "/logo/pc_logo.png"}
             alt="Profilbilde"
-            width={70}
-            height={70}
+            width={50}
+            height={50}
             className="w-half h-auto rounded-full"
           />
         </div>
