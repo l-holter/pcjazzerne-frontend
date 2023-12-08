@@ -17,7 +17,8 @@ export default function Navbar() {
         <div className="h-full w-1/3 flex flex-grow-0 pl-10 items-center justify-start">
           <Link className="mr-20 text-2xl hover:text-pcjazzerne-gold transition-colors hover:underline" href="/">Home</Link>
           <Link className="mr-20 text-2xl hover:text-pcjazzerne-gold transition-colors hover:underline" href="/">Stats</Link>
-          <Link className="text-2xl hover:text-pcjazzerne-gold transition-colors hover:underline" href="/">Kryss</Link>
+          <Link className="mr-20 text-2xl hover:text-pcjazzerne-gold transition-colors hover:underline" href="/">Kryss</Link>
+          <Link className="text-2xl hover:text-pcjazzerne-gold transition-colors hover:underline" href="/players">Spillere</Link>
         </div>
 
         <div className="h-full w-1/3 flex flex-grow-0 items-center justify-center">
