@@ -17,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className='w-screen h-screen'>
+      <body className="{inter.className} w-full h-full">
         <AuthWrapper>
           {children}
         </AuthWrapper>

@@ -1,6 +1,9 @@
 import PocketBase from "pocketbase";
 
-export const pb = new PocketBase("https://pb.hjelmtvedt.io");
+export const PB_URL = "https://pb.hjelmtvedt.io/"
+export const FILE_URL = PB_URL + "api/files/"
+
+export const pb = new PocketBase(PB_URL);
 
 export async function loginWithGoogle() {
   const authData = await pb.collection('users').authWithOAuth2({ 
