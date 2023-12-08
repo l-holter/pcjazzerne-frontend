@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import AuthWrapper from './contexts/AuthWrapper'
+import Footer from './components/Footer'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className='w-screen h-screen'>
       <body className="{inter.className} w-full h-full">
+        <Footer />
         <AuthWrapper>
           {children}
         </AuthWrapper>
