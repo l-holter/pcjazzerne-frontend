@@ -18,7 +18,7 @@ const Players: NextPage = () => {
   const fetchPlayerData = async () => {
     try {
       const records = await pb.collection("players").getFullList({
-        sort: "-shirtNumber",
+        sort: "+shirtNumber",
       });
 
       const playerData: PlayerProps[] = records.map((record: any) => ({
@@ -42,7 +42,9 @@ const Players: NextPage = () => {
     <div className="flex flex-wrap justify-center">
       {playerData &&
         playerData.map((player, index) => (
-          <Player key={index} {...player} />
+          <div key={index} className="m-2">
+            <Player {...player} />
+          </div>
         ))}
     </div>
   );
