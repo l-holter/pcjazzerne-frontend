@@ -7,7 +7,7 @@ interface HomeLayoutProps {
 
 const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="w-full h-full bg-gray-100">
       <Navbar />
       <div className="mx-auto pt-40">{children}</div>
     </div>
