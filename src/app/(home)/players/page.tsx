@@ -6,14 +6,14 @@ import { usePBAuth } from "@/app/contexts/AuthWrapper";
 import { useEffect, useState } from "react";
 
 const Players: NextPage = () => {
-  const { isInitialized } = usePBAuth();
-  const [playerData, setPlayerData] = useState<PlayerProps[] | null>(null);
+  const { isAuthorized } = usePBAuth();
+  const [ playerData, setPlayerData ] = useState<PlayerProps[] | null>(null);
 
   useEffect(() => {
-    if (isInitialized) {
+    if (isAuthorized) {
       fetchPlayerData();
     }
-  }, [isInitialized]);
+  }, [isAuthorized]);
 
   const fetchPlayerData = async () => {
     try {

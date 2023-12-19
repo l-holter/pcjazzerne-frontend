@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='w-screen h-screen'>
-      <body className="{inter.className} w-full h-full">
+      <body className="{inter.className} w-full h-full bg-gray-100">
         <Footer />
         <AuthWrapper>
           {children}
